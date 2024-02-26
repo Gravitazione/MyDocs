@@ -1,0 +1,21 @@
+{
+  "index": "About Docs",
+  "git": {
+    "title": "Git"
+  },
+  "frontend": {
+    "title": "Frontend"
+  },
+  "backend": {
+    "title": "Backend"
+  },
+  "testing": {
+    "title": "Testing"
+  },
+  "tool": {
+    "title": "Tooling"
+  },
+  "Research": {
+    "title": "Research"
+  }
+}
