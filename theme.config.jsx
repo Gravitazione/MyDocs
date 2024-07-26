@@ -4,7 +4,7 @@ export default {
       link: 'https://github.com/Gravitazione/MyDocs'
     },
     footer: {
-      text: 'MIT 2024 © Lightnet.io'
+      text: 'MIT 2024 © Sasipas Chinjatupornpong'
     }
     // ... other theme options
   }
