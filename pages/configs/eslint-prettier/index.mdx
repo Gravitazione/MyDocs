@@ -1,0 +1,39 @@
+## Overview ESLint and Prettier
+
+#### ESLint
+เป็น Linter ที่ตรวจเช็คแนะนำหรือแก้ไข Code ตาม rules มาตรฐานต่างๆที่กำหนดไว้ภายในทีม โดยที่ rules 
+สามารถ Config ตามได้ Best practice ตามบริษัทต่างๆ เช่น Airbnb โดยที่ถ้า Code มี syntax error ก็จะมีการแจ้งเตือน
+ตาม rules ที่ได้กำหนดไว้ โดยที่ในบางบริษัทอาจมีการเตรียม pre-commit ไว้เพื่อเวลาที่มี code ที่ไม่ตรงตาม rules 
+ที่กำหนดไว้จะไม่สามารถทำการ commit ได้ rules ที่ยกตัวอย่าง อย่างเช่น การประกาศตัวแปรไว้แล้วไม่มีการใช้งานตัวแปรนั้นๆ
+
+#### Prettier
+เป็น Formatter ที่ช่วยในการ format code ให้ดูสวยงามมากขึ้น อ่านง่ายขึ้นและตัว ESLint ยังสามารถใข้งานร่วมกันกับ 
+Prettier ได้เพื่อทำการ Format ตาม rules ที่กำหนดและสำคัญ
+
+----
+#### Examples
+
+```js
+const CheckboxGlobal: FC<CheckBoxProps> = ({ checked, onClick, label, disabled }) => {
+  return (
+    <Checkbox checked={checked} label={<span className="text-white mt-[1px]">{label}</span>} color="blue" ripple={true} crossOrigin={undefined} className={`checked:bg-primary border-solid border-primary ${disabled ? 'checked:opacity-100' : 'opacity-100'}`} onClick={onClick} disabled={disabled} />
+  );
+};
+```
+ใน Code ตัวอย่างนี้คือการทำ Global Component อย่าง Checkbox ซึ่งเมื่อดูจาก Code ก็ๆไม่ได้เกิดข้อผิดพลาดอะไร แต่เมื่อทำการกำหนด rules และ format ตาม rules ก็จะเป็นอย่าง Code ด้านล่าง
+```js
+const CheckboxGlobal: FC<CheckBoxProps> = ({ checked, onClick, label, disabled }) => {
+  return (
+    <Checkbox
+      checked={checked}
+      label={<span className="text-white mt-[1px]">{label}</span>}
+      color="blue"
+      ripple={true}
+      crossOrigin={undefined}
+      className={`checked:bg-primary border-solid border-primary ${disabled ? 'checked:opacity-100' : 'opacity-100'}`}
+      onClick={onClick}
+      disabled={disabled}
+    />
+  );
+};
+```

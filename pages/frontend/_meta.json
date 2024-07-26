@@ -1,8 +1,8 @@
 {
-    "react": {
-        "title": "React"
+    "project-structure": {
+        "title": "Project Structure"
     },
-    "vue": {
-        "title": "Vue"
+    "configs": {
+        "title": "Configurations"
     }
 }

@@ -1,21 +1,16 @@
 {
-  "index": "About Docs",
-  "git": {
-    "title": "Git"
-  },
-  "frontend": {
-    "title": "Frontend"
-  },
-  "backend": {
-    "title": "Backend"
-  },
-  "testing": {
-    "title": "Testing"
-  },
-  "tool": {
-    "title": "Tooling"
-  },
-  "Research": {
-    "title": "Research"
+    "index": "About docs",
+    "frontend": {
+      "title": "Frontend"
+    },
+    "backend": {
+      "title": "Backend"
+    },
+    "configs": {
+      "title": "Configurations"
+    },
+    "version-control": {
+      "title": "Version Control"
+    }
   }
-}
+  

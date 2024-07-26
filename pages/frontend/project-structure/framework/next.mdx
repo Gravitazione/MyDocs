@@ -1,0 +1,127 @@
+## Folder Structure for Next
+
+```
+.
+├── .husky/
+├── .storybook/
+├── src/
+│   ├── __test__/
+│   │   ├── components/
+│   │   │   └── Component.test.tsx
+│   │   └── functions/
+│   │       └── helper.test.ts
+│   ├── app/
+│   │   ├── page-name/
+│   │   │   ├── child-page/
+│   │   │   │   └── page.tsx
+│   │   │   ├── _components/
+│   │   │   │   └── List.tsx
+│   │   │   └── page.tsx
+│   │   ├── global.scss
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── assets/
+│   │   ├── fonts/
+│   │   ├── icons/
+│   │   ├── images/
+│   │   └── videos/
+│   ├── components/
+│   │   ├── button/
+│   │   │   ├── GlobalButton.tsx
+│   │   │   ├── ButtonWithIcons.tsx
+│   │   │   └── ...
+│   │   └── ...
+│   ├── constants/
+│   │   ├── enums/
+│   │   │   └── index.ts
+│   │   ├── i18n/
+│   │   │   └── index.ts
+│   │   └── ...
+│   ├── interfaces/
+│   │   ├── customer/
+│   │   │   ├── customer-detail.ts
+│   │   │   └── ...
+│   │   ├── index.ts
+│   │   └── ...
+│   ├── types/
+│   │   ├── button/
+│   │   │   └── index.ts
+│   │   └── ...
+│   ├── services/
+│   │   ├── api/
+│   │   │   ├── customer/
+│   │   │   │   ├── fiataccount/
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── .../
+│   │   │   └── .../
+│   │   └── index.ts
+│   ├── stores/
+│   │   ├── components/
+│   │   │   ├── drawer/
+│   │   │   │   └── index.ts
+│   │   │   ├── modal/
+│   │   │   │   └── index.ts
+│   │   │   └── .../
+│   │   └── pages/
+│   │       ├── login/
+│   │       │   └── index.ts
+│   │       └── .../
+│   ├── stories/
+│   │   ├── GlobalButton.stories.tsx
+│   │   └── ...
+│   └── utils/
+│       ├── authen/
+│       │   └── index.ts
+│       ├── helper.ts
+│       ├── hooks.ts
+│       ├── utils.ts
+│       └── ...
+├── .env
+├── .eslintignore
+├── .eslintrc.json(.eslint.cjs)
+├── .gitignore
+├── .prettierignore
+├── .prettier.cjs
+├── next.config.js
+└── tailwind.config.cjs
+```
+
+#### Conventions and Guidelines
+
+- **.husky** -> โฟลเดอร์สำหรับการเก็บ husky เพื่อใช้งาน git hook เช่นการทำ pre-commit, pre-push
+- **.storybook** -> โฟลเดอร์สำหรับการเก็บ config storybook เพื่อใช้งาน storybook
+- **test** -> โฟลเดอร์สำหรับการเก็บ unit test, สำหรับการทำ test ครอบ functions ต่างๆ
+- **app** -> โฟลเดอร์ initial app routing ใน nextjs project มีหน้าที่เป็นที่เก็บ pages, layout, และการทำ routing ต่างๆ
+- **assets** -> โฟลเดอร์สำหรับเก็บ assets เช่น Images, Fonts
+  - **fonts** -> โฟลเดอร์สำหรับเก็บ fonts
+  - **images** -> โฟลเดอร์สำหรับเก็บ images (ข้างในแยกโฟลเดอร์ในมุมมอง feature base)
+  - **icons** -> โฟลเดอร์สำหรับเก็บ icons (ข้างในแยกโฟลเดอร์ในมุมมอง feature base)
+  - กรณีมี asset อื่นๆที่นอกเหนือจากที่กล่าวมาให้สร้างโฟลเดอร์ใหม่ภายใน asset ได้เลยเช่นมี asset ที่เป็น video ก็สร้างโฟลเดอร์ชื่อ videos
+- **components** -> โฟลเดอร์สำหรับเก็บ Global component( component ที่ใช้ในหลายๆที่) 
+โดยมุมมองในการแยกโฟลเดอร์มองเป็น object base เช่น โฟลเดอร์ button สำหรับใส่ Global component 
+ที่เกี่ยวกับ button ถ้ามีการทำ Global component อื่นๆ ก็นำมาเก็บไว้ในโฟล์เดอร์ของ components
+- **constant** -> โฟลเดอร์สำหรับเก็บ ข้อมูลที่เป็นค่าคงที่ต่างๆ
+  - **enums** -> โฟลเดอร์สำหรับเก็บไฟล์ enums ต่างๆที่ใช้ในโปรเจค
+  - **i18n** -> โฟลเดอร์สำหรับเก็บ internationalization หรือการ support หลายภาษา
+- **interfaces** -> โฟลเดอร์สำหรับเก็บส่วที่เป็นเหมือน Data Model
+- **types** -> โฟลเดอร์สำหรับการเก็บ type ต่างๆที่เฉพาะเจาะจง ใน typescript แยกตาม feature ต่างๆ
+- **services** -> โฟลเดอร์สำหรับเก็บ services api ต่างๆ
+  - **api** -> โฟลเดอร์สำหรับเก็บ api โดยแบ่งตาม feature
+  - **index.ts** -> ไฟล์ในการทำ services กลางสำหรับการเรียกใช้งาน api ต่าง
+- **stores** -> โฟลเดอร์สำหรับการเก็บ Store เพื่อทำ State management แยกกัน ตาม feature 
+  - **components** -> โฟลเดอร์สำหรับเก็บ Stores ของแต่ละ Component
+  - **pages** -> โฟลเดอร์สำหรับเก็บ Stores ของแต่ละ Page
+- **stories** -> โฟลเดอร์สำหรับเก็บ Storybook เพื่อการทำ UI testing, UI Documentation  
+- **styles** -> โฟลเดอร์สำหรับการเก็บ styles css, scss ของ Components หรือ Pages
+- **utils** -> โฟลเดอร์สำหรับเก็บ Reusable function
+  - **helpers.ts** -> ไฟล์สำหรับการเก็บ helper functions
+  - **hooks.ts** -> ไฟล์สำหรับการเก็บ React hooks ที่เป็น Global
+  - **utils.ts** -> ไฟล์สำหรับการเก็บ utility functions
+- **.env** -> ไฟล์สำหรับเก็บ environment variables ต่างๆ
+- **.eslintignore** -> ไฟล์สำหรับ config สิ่งที่จะ ignore จาก eslint
+- **.eslintrc.cjs** -> ไฟล์สำหรับ config rules eslint
+- **.gitignore** -> ไฟล์สำหรับ config สิ่งที่จะ ignore จาก git
+- **.prettierignore** -> ไฟล์สำหรับ config สิ่งที่จะ ignore จาก prettier
+- **.prettierrc.cjs** -> ไฟล์สำหรับ config rules prettier
+- **next.config.js** -> ไฟล์สำหรับ config Next.js
+- **tailwind.config.cjs** -> ไฟล์สำหรับ config tailwindcss

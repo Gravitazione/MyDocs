@@ -1,0 +1,8 @@
+{
+    "storybook": {
+        "title": "Storybook"
+    },
+    "testing": {
+        "title": "Testing (Optional)"
+    }
+}

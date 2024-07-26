@@ -1,7 +1,10 @@
 export default {
-    logo: <span>Documentation</span>,
+    logo: <span>Software Development Documentations</span>,
     project: {
-      link: 'https://github.com/shuding/nextra'
+      link: 'https://github.com/Gravitazione/MyDocs'
+    },
+    footer: {
+      text: 'MIT 2024 © Lightnet.io'
     }
     // ... other theme options
   }

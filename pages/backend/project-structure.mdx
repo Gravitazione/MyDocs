@@ -1,0 +1,68 @@
+## Folder Structure
+
+```
+.
+├── prisma/
+│   ├── migrations/
+│   └── schema.prisma
+├── src/
+│   ├── api/
+│   │   └── v1/
+│   │       ├── controllers/
+│   │       │   ├── transactions/
+│   │       │   │   └── transactionsController.ts
+│   │       │   ├── customer/
+│   │       │   │   └── customerController.ts
+│   │       │   ├── tests/
+│   │       │   └── index.ts
+│   │       ├── helpers/
+│   │       ├── middlewares/
+│   │       ├── models/
+│   │       ├── routes/
+│   │       ├── services/
+│   │       │   ├── tests/
+│   │       │   └── index.ts
+│   │       ├── types/
+│   │       └── validations/
+│   ├── config/
+│   │   ├── constants.ts
+│   │   ├── DatabaseConfig.ts
+│   │   └── Logger.ts
+│   └── index.ts
+├── tests/
+├── .env
+├── .eslintignore
+├── .eslintrc.cjs
+├── .gitignore
+├── .prettierignore
+└── .prettierrc.cjs
+
+```
+
+#### Conventions and Guidelines
+
+- **prisma**
+    - **migrations** -> โฟลเดอร์ที่เก็บไฟล์การย้ายข้อมูลเมื่อเราทำการเปลี่ยนแปลงโครงสร้างฐานข้อมูล
+    - **schema.prisma** -> ไฟล์หลักที่กำหนดโครงสร้างของฐานข้อมูลและ Prisma models
+- **src** -> โฟลเดอร์หลักสำหรับโค้ดต้นฉบับทั้งหมดของโปรเจกต์
+ - **api** -> โฟลเดอร์สำหรับ API versions ต่างๆ
+   - **v1** -> โฟลเดอร์สำหรับ API เวอร์ชัน 1
+       - **controllers** -> ประกอบด้วยไฟล์ที่จัดการกับการตอบสนองของ HTTP request และ response
+          - **transactions** -> เเบ่งแยก controllers ตาม module
+            - **transactionsController.ts** -> จัดการกับ logic ที่เกี่ยวข้องกับ transactions requests
+       - **helpers** -> ประกอบด้วยไฟล์ที่มีฟังก์ชันช่วยเหลืออื่นๆ
+       - **middlewares** -> ประกอบด้วยไฟล์ที่มี middleware functions สำหรับจัดการกับ request และ response ก่อนที่จะถึง controllers
+       - **models** -> ประกอบด้วยไฟล์ที่กำหนดโครงสร้างของข้อมูลหรือ schemas
+       - **routes** -> ประกอบด้วยไฟล์ที่กำหนดเส้นทาง (routes) ของ API
+       - **services** -> ประกอบด้วยไฟล์ที่มี business logic หรือการติดต่อกับฐานข้อมูล
+       - **types** -> โฟลเดอร์สำหรับการเก็บ type ต่างๆที่เฉพาะเจาะจง ใน typescript แยกตาม feature ต่างๆ
+       - **validations**
+   - **config** -> ไฟล์สำหรับ config node.js
+   - **index.ts** -> ไฟล์ในการทำ services กลางสำหรับการเรียกใช้งาน api ต่าง
+- **tests** -> โฟลเดอร์สำหรับการเก็บ unit test, สำหรับการทำ test ครอบ functions ต่างๆ
+- **.env** -> ไฟล์สำหรับเก็บ environment variables ต่างๆ
+- **.eslintignore** -> ไฟล์สำหรับ config สิ่งที่จะ ignore จาก eslint
+- **.eslintrc.cjs** -> ไฟล์สำหรับ config rules eslint
+- **.gitignore** -> ไฟล์สำหรับ config สิ่งที่จะ ignore จาก git
+- **.prettierignore** -> ไฟล์สำหรับ config สิ่งที่จะ ignore จาก prettier
+- **.prettierrc.cjs** -> ไฟล์สำหรับ config rules prettier

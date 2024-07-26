@@ -1,0 +1,159 @@
+### 📚 Conventions
+
+#### Coding Conventions
+
+###### 1. Type Annotations:
+
+ใช้ type safety เสมอ
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+###### 2. กรุณาใช้ Interfaces เเละ Types:
+
+ใช้ interfaces สำหรับกำหนด object shapes and types
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+}
+
+type UserId = number;
+```
+
+###### 3. Modules:
+
+ใช้ ES6 module syntax (import and export).
+
+```typescript
+import { User } from './models/user';
+export function getUser(id: UserId): User { ... }
+
+
+type UserId = number;
+```
+
+###### 4. Async/Await:
+
+ใช้ async/await แทน Promises สำหรับ coding ในส่วนของ function
+
+```typescript
+async function fetchData(): Promise<Data> {
+  const response = await fetch(url);
+  return await response.json();
+}
+```
+
+---
+
+#### Documentation
+
+###### 1. Comments (option):
+
+ใช้ JSDoc comments for functions, classes, and modules.
+
+```typescript
+/**
+ * Adds two numbers.
+ * @param {number} a - First number.
+ * @param {number} b - Second number.
+ * @returns {number} Sum of a and b.
+ */
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+###### 2. README:
+
+จัดการไฟล์ README ที่ครอบคลุมพร้อมคำแนะนำในการตั้งค่า การใช้งาน และแนวทาง
+
+#### Error Handling (option)
+
+###### 1. Global Error Handling:
+
+```typescript
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+});
+```
+
+###### 2. Custom Errors:
+
+```typescript
+class NotFoundError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "NotFoundError";
+  }
+}
+```
+
+---
+
+#### Documentation and Community Standards
+
+###### 1. API Documentation:
+
+ใช้ Swagger เพื่อจัดทำเอกสาร API
+
+```typescript
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger.json";
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+```
+
+---
+
+#### Advanced Testing
+
+###### 1. Integration Tests:
+
+เขียน unit testเพื่อทดสอบการทำงานของ application เบื้องต้น
+
+```typescript
+import request from "supertest";
+import app from "../src/app";
+
+describe("GET /users", () => {
+  it("should return a list of users", async () => {
+    const response = await request(app).get("/users");
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+  });
+});
+```
+
+###### 2. Mocking:
+
+Use libraries like sinon or jest to mock dependencies and test units in isolation
+
+```typescript
+import sinon from "sinon";
+import { getUser } from "../src/services/userService";
+import * as db from "../src/db";
+
+describe("getUser", () => {
+  it("should return user data", async () => {
+    const mock = sinon
+      .stub(db, "findUserById")
+      .resolves({ id: 1, name: "John" });
+    const user = await getUser(1);
+    expect(user).toEqual({ id: 1, name: "John" });
+    mock.restore();
+  });
+});
+```
+
+---
+
+แบบแผนเพิ่มเติมและแนวทางปฏิบัติที่ดีที่สุดเหล่านี้ช่วยปรับปรุงการตั้งค่าโปรเจ็กต์ คุณภาพโค้ด และประสิทธิภาพให้ดียิ่งขึ้น เพื่อให้มั่นใจว่าแอปพลิเคชัน Node.js และ TypeScript มีประสิทธิภาพ บำรุงรักษาได้ และ scalable ได้
